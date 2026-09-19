@@ -1,0 +1,12 @@
+[
+  {
+    "id": "244246a3-9efa-4f8a-92d0-ae162c7ade50",
+    "name": "The Dandy chair",
+    "sku": "CHAIR-001",
+    "price": 125.0,
+    "category": "chairs",
+    "tags": [
+      "chair"
+    ]
+  }
+]
