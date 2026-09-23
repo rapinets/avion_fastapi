@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | Avion</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="{{ url_for('home') }}">Avion</a>
+            <nav class="main-nav" aria-label="Головна навігація">
+                <a href="{{ url_for('home') }}">Головна</a>
+                <a href="{{ url_for('catalog') }}">Продукти</a>
+                <a href="{{ url_for('contacts') }}">Контакти</a>
+                <a href="{{ url_for('admin_products') }}">Адмінка</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">© Avion</div>
+    </footer>
+</body>
+</html>

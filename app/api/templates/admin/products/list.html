@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Незахищена адмін-панель</p>
+            <h1>Керування продуктами</h1>
+        </div>
+        <a class="button" href="{{ url_for('admin_create_product_form') }}">
+            Додати продукт
+        </a>
+    </div>
+
+    {% if products %}
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>SKU</th>
+                    <th>Категорія</th>
+                    <th>Ціна</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.sku }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ "%.2f"|format(product.price) }} грн</td>
+                    <td class="actions">
+                        <a
+                            class="button button-secondary"
+                            href="{{ url_for('admin_edit_product_form', product_id=product.id) }}"
+                        >
+                            Редагувати
+                        </a>
+                        <form
+                            method="post"
+                            action="{{ url_for('admin_delete_product', product_id=product.id) }}"
+                            onsubmit="return confirm('Видалити цей продукт?')"
+                        >
+                            <button class="button button-danger" type="submit">Видалити</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="empty-state">Продуктів поки немає.</p>
+    {% endif %}
+</section>
+{% endblock %}

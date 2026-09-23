@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container narrow">
+    <a class="text-link" href="{{ url_for('catalog') }}">← Повернутися до каталогу</a>
+
+    <article class="product-detail">
+        <p class="eyebrow">{{ product.category }}</p>
+        <h1>{{ product.name }}</h1>
+        <p class="muted">SKU: {{ product.sku }}</p>
+        <p class="price price-large">{{ "%.2f"|format(product.price) }} грн</p>
+
+        {% if product.tags %}
+        <div class="tag-list" aria-label="Теги продукту">
+            {% for tag in product.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </article>
+</section>
+{% endblock %}

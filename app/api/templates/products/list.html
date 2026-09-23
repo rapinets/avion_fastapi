@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container">
+    <p class="eyebrow">Каталог Avion</p>
+    <h1>Усі продукти</h1>
+
+    <form method="get" action="{{ url_for('catalog') }}">
+        <label for="category">Категорія</label>
+
+        <select id="category" name="category">
+            <option value="">Усі категорії</option>
+
+            {% for category in categories %}
+                <option
+                    value="{{ category.value }}"
+                    {% if selected_category == category %}selected{% endif %}
+                >
+                    {{ category.value }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button class="button" type="submit">
+            Фільтрувати
+        </button>
+        {% if selected_category %}
+            <a class="button button-secondary"
+               href="{{ url_for('catalog') }}">
+                Скинути
+            </a>
+        {% endif %}
+    </form>
+
+    <div class="product-grid">
+        {% for product in products %}
+            {% include "components/product_card.html" %}
+        {% else %}
+            <p class="empty-state">
+                У цій категорії продуктів немає.
+            </p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

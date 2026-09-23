@@ -1,0 +1,9 @@
+<article class="product-card">
+    <p class="eyebrow">{{ product.category }}</p>
+    <h2>{{ product.name }}</h2>
+    <p class="muted">SKU: {{ product.sku }}</p>
+    <p class="price">{{ "%.2f"|format(product.price) }} грн</p>
+    <a class="text-link" href="{{ url_for('product_detail', product_id=product.id) }}">
+        Переглянути продукт →
+    </a>
+</article>

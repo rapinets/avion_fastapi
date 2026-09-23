@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-content">
+        <p class="eyebrow">Меблі та аксесуари для дому</p>
+        <h1>Продуманий дизайн для щоденного життя</h1>
+        <p>Колекція Avion поєднує прості форми, комфорт і сучасні матеріали.</p>
+        <a class="button" href="{{ url_for('catalog') }}">Переглянути всі продукти</a>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Каталог</p>
+            <h2>Популярні продукти</h2>
+        </div>
+        <a class="text-link" href="{{ url_for('catalog') }}">Усі продукти →</a>
+    </div>
+
+    <div class="product-grid">
+        {% for product in featured_products %}
+            {% include "components/product_card.html" %}
+        {% else %}
+            <p class="empty-state">Продуктів поки немає.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

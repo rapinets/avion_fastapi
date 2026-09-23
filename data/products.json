@@ -8,5 +8,27 @@
     "tags": [
       "chair"
     ]
+  },
+  {
+    "id": "fa2c5118-203f-4446-9fb2-70c22f0daf4c",
+    "name": "The Silky Vase",
+    "sku": "VASE-001",
+    "price": 155.0,
+    "category": "vases",
+    "tags": [
+      "vase",
+      "vases"
+    ]
+  },
+  {
+    "id": "6ce8e1a1-29f1-4a35-a7a3-b7894089e88a",
+    "name": "The Poplar suede sofa",
+    "sku": "SOFA-001",
+    "price": 985.0,
+    "category": "sofas",
+    "tags": [
+      "sofa",
+      "sofas"
+    ]
   }
 ]
