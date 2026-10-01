@@ -1,0 +1,9 @@
+<article class="product-card">
+    <p class="eyebrow">{{ film.genre }}</p>
+    <h2>{{ film.title }}</h2>
+    <p class="muted">Продюсер: {{ film.producer }}</p>
+    <p class="price">{{ film.year }} року</p>
+    <a class="text-link" href="{{ url_for('film_detail', film_id=film.id) }}">
+        Більше →
+    </a>
+</article>

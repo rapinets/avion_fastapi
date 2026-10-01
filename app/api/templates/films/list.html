@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container">
+    <div class="section-heading">
+        <p class="eyebrow">Каталог Фільмів</p>
+    <h1>Усі фільми</h1>
+    <a class="button" href="{{ url_for('create_film_form') }}">
+            Додати фільм
+    </a>
+    </div>
+
+    <div class="product-grid">
+        {% for film in films %}
+            {% include "components/film_card.html" %}
+        {% else %}
+            <p class="empty-state">
+                Не додано жодного фільму.
+            </p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container narrow">
+    <a class="text-link" href="{{ url_for('films') }}">← До списку фільмів</a>
+    <h1>{{ page_title }}</h1>
+
+    {% if errors %}
+    <div class="alert alert-error" role="alert">
+        <strong>Перевірте введені дані:</strong>
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div id="submit-error" class="alert alert-error" role="alert" hidden></div>
+
+    <form id="film-form" class="product-form" method="post" action="{{ action_url }}">
+        <label>
+            Назва
+            <input
+                type="text"
+                name="title"
+                value="{{ values.title }}"
+                minlength="2"
+                maxlength="120"
+                required
+            >
+        </label>
+
+        <label>
+            Продюсер
+            <input
+                type="text"
+                name="producer"
+                value="{{ values.producer }}"
+                maxlength="20"
+                required
+            >
+        </label>
+
+        <label>
+            Жанр
+            <input
+                type="text"
+                name="genre"
+                value="{{ values.genre }}"
+                maxlength="20"
+                required
+            >
+        </label>
+
+        <label>
+            Тривалість
+            <input
+                type="number"
+                name="duration"
+                value="{{ values.duration }}"
+                required
+            >
+        </label>
+
+        <label>
+            Рік
+            <input
+                type="number"
+                name="year"
+                value="{{ values.year }}"
+                min="1900"
+                max="2026"
+                required
+            >
+        </label>
+
+        <label>
+            Актори через кому
+            <input
+                type="text"
+                name="actors"
+                value="{{ values.actors }}"
+            >
+        </label>
+
+        <button class="button" type="submit">{{ submit_label }}</button>
+    </form>
+</section>
+<!--<script>-->
+<!--    const filmForm = document.getElementById("film-form");-->
+<!--    filmForm.addEventListener("submit", async (event) => {-->
+<!--        event.preventDefault();-->
+<!--        const errorBox = document.getElementById("submit-error");-->
+<!--        const submitButton = filmForm.querySelector('button[type="submit"]');-->
+<!--        const payload = Object.fromEntries(new FormData(filmForm));-->
+<!--        payload.duration = Number(payload.duration);-->
+<!--        payload.year = Number(payload.year);-->
+<!--        errorBox.hidden = true;-->
+<!--        submitButton.disabled = true;-->
+
+<!--        try {-->
+<!--            const response = await fetch(filmForm.action, {-->
+<!--                method: filmForm.method.toUpperCase(),-->
+<!--                headers: { "Content-Type": "application/json" },-->
+<!--                body: JSON.stringify(payload),-->
+<!--            });-->
+<!--            if (!response.ok) {-->
+<!--                const result = await response.json();-->
+<!--                const detail = result.detail;-->
+<!--                throw new Error(Array.isArray(detail)-->
+<!--                    ? detail.map((item) => `${item.loc.join(".")}: ${item.msg}`).join("; ")-->
+<!--                    : (detail || "Не вдалося зберегти фільм."));-->
+<!--            }-->
+<!--            window.location.assign(filmForm.dataset.successUrl);-->
+<!--        } catch (error) {-->
+<!--            errorBox.textContent = error.message;-->
+<!--            errorBox.hidden = false;-->
+<!--        } finally {-->
+<!--            submitButton.disabled = false;-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+{% endblock %}
